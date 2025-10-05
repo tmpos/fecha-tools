@@ -1,0 +1,55 @@
+{
+  "name": "fecha-tools",
+  "version": "3.0.0",
+  "description": "Utilidad profesional de fechas desarrollada por TM POS SRL. Compatible con Vue, Electron, Node y Capacitor. Incluye rangos dinámicos, formatos humanos, métricas de tiempo y soporte multi-idioma.",
+  "main": "src/fechaTools.js",
+  "keywords": [
+    "tmpos",
+    "fecha",
+    "fechas",
+    "date",
+    "time",
+    "utilities",
+    "vue",
+    "electron",
+    "capacitor",
+    "node",
+    "moment",
+    "dayjs",
+    "tools"
+  ],
+  "homepage": "https://github.com/tmpos/fecha-tools#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tmpos/fecha-tools.git"
+  },
+  "author": {
+    "name": "Tomás de Jesús Taveras Jiménez",
+    "email": "soporte@tmposrd.com",
+    "url": "https://tmposrd.com"
+  },
+  "license": "TM POS SRL INTERNAL LICENSE",
+  "type": "module",
+  "exports": {
+    ".": "./src/fechaTools.js"
+  },
+  "scripts": {
+    "test": "node ./tests/test-fechaTools.js",
+    "start": "node ./src/fechaTools.js",
+    "build": "npm run minify",
+    "minify": "npx terser ./src/fechaTools.js -o ./dist/fechaTools.min.js --compress --mangle"
+  },
+  "files": [
+    "src/",
+    "dist/",
+    "README.md",
+    "LICENSE.md"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "bugs": {
+    "url": "https://github.com/tmpos/fecha-tools/issues"
+  },
+  "private": false
+}
