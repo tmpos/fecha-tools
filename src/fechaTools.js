@@ -6,6 +6,7 @@
    - Nuevos rangos: 3, 15, 30, 60, 90 días, trimestres, semestres, años
    - Formatos largos / cortos, ISO, Unix
    - Comparaciones (días entre, meses entre, etc.)
+   - Sumar/restar días, meses y años
    - Idioma personalizable (es/en)
    - Soporte de zona horaria
    - Compatible con Vue, Electron, Node, Capacitor
@@ -112,6 +113,43 @@ export const FechaTools = (() => {
     };
   };
 
+  // 🔹 SUMAR / RESTAR días, meses y años
+  const sumarDias = (fecha = new Date(), cantidad = 1) => {
+    const f = new Date(fecha);
+    f.setDate(f.getDate() + cantidad);
+    return `${f.getFullYear()}-${pad(f.getMonth() + 1)}-${pad(f.getDate())}`;
+  };
+
+  const restarDias = (fecha = new Date(), cantidad = 1) => {
+    const f = new Date(fecha);
+    f.setDate(f.getDate() - cantidad);
+    return `${f.getFullYear()}-${pad(f.getMonth() + 1)}-${pad(f.getDate())}`;
+  };
+
+  const sumarMeses = (fecha = new Date(), cantidad = 1) => {
+    const f = new Date(fecha);
+    f.setMonth(f.getMonth() + cantidad);
+    return `${f.getFullYear()}-${pad(f.getMonth() + 1)}-${pad(f.getDate())}`;
+  };
+
+  const restarMeses = (fecha = new Date(), cantidad = 1) => {
+    const f = new Date(fecha);
+    f.setMonth(f.getMonth() - cantidad);
+    return `${f.getFullYear()}-${pad(f.getMonth() + 1)}-${pad(f.getDate())}`;
+  };
+
+  const sumarAnios = (fecha = new Date(), cantidad = 1) => {
+    const f = new Date(fecha);
+    f.setFullYear(f.getFullYear() + cantidad);
+    return `${f.getFullYear()}-${pad(f.getMonth() + 1)}-${pad(f.getDate())}`;
+  };
+
+  const restarAnios = (fecha = new Date(), cantidad = 1) => {
+    const f = new Date(fecha);
+    f.setFullYear(f.getFullYear() - cantidad);
+    return `${f.getFullYear()}-${pad(f.getMonth() + 1)}-${pad(f.getDate())}`;
+  };
+
   // 🔹 Detalles completos de una fecha
   const detalles = (fecha = new Date()) => {
     const f = new Date(fecha);
@@ -146,8 +184,6 @@ export const FechaTools = (() => {
     // Semana actual
     const inicioSemana = new Date(hoy);
     inicioSemana.setDate(hoy.getDate() - hoy.getDay());
-    const finSemana = new Date(inicioSemana);
-    finSemana.setDate(inicioSemana.getDate() + 6);
 
     const rangos = {
       dia: dd,
@@ -214,7 +250,13 @@ export const FechaTools = (() => {
     formatoHumano,
     detalles,
     rangoTrimestre,
-    rangoSemestre
+    rangoSemestre,
+    sumarDias,
+    restarDias,
+    sumarMeses,
+    restarMeses,
+    sumarAnios,
+    restarAnios
   };
 
 })();
